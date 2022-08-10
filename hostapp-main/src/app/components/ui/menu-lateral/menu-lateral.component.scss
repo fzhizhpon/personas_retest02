@@ -1,0 +1,71 @@
+$fondo-item-seleccionado: var(--primary);
+$texto-item-seleccionado: #FFF;
+
+.item-menu-parent {
+	padding: 0.7rem 1.1rem;
+
+	&:hover {
+		background: #dae4f7;
+		color: var(--primary);
+	}
+}
+
+.item-menu {
+	transition: all 0.07s;
+	font-size: 1.44rem;
+	margin: 1rem 0;
+	color: #333f5a;
+	font-weight: 500;
+	border-radius: 0.6rem;
+}
+
+.item-submenu {
+	position: relative;
+	margin: 0;
+	padding-left: 1.5rem;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: 0.3rem;
+		height: 100%;
+		top: 0;
+		left: 0.8rem;
+		background: #8b9ab8;
+		border-radius: 0.3rem;
+	}
+
+	.item-menu {
+		margin: 0.5rem 0;
+		padding: 0.6rem 1.1rem;
+
+		&:hover {
+			background: #FFF;
+			color: var(--primary);
+		}
+	}
+}
+
+.item-active {
+	background: #dae4f7;
+	color: var(--primary);
+
+	&:hover {
+		background: #dae4f7;
+		color: var(--primary);
+	}
+}
+
+.z-index {
+	z-index: 9999999;
+}
+
+.bg-image {
+	// background-image: url('../../../../../projects/autenticacion/src/assets/login/fondo-noticias.jpg');
+	// background-size: cover;
+	// background-position: center;
+	// background: #f8fbfc;
+	border: none;
+	border-right: 0.1rem solid var(--bluegray-300);
+	background: #f0f4f8;
+}

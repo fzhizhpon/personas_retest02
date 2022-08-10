@@ -1,0 +1,137 @@
+<div class="w-full mb-10 flex items-center flex-no-wrap justify-between">
+	<h3 lang langLabel="representantes:marcador" class="font-bold m-0 display-block w-full m-0">Representantes / Tutores
+		/ Apoderados</h3>
+
+		<button (click)="ObtenerTodo()" nz-button nzType="text" nz-tooltip [nzTooltipTitle]="titleTemplate">
+			<i nz-icon nzType="reload" nzTheme="outline"></i>
+		</button>
+		<ng-template #titleTemplate>
+		<span lang langLabel="vs-tooltip:recargar">
+			Volver a cargar
+		</span>
+		  </ng-template>
+</div>
+
+<form nz-form [formGroup]="form" class="w-full grid gap-15 grid-15">
+	<div class="grid-col-7">
+		<p lang langLabel="representantes:persona" class="label">Persona:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+				<vs-select-persona class="w-full" formControlName="codigoRepresentante"></vs-select-persona>
+				<ng-template #combineTpl let-control>
+					<ng-container *ngIf="control.hasError('required')">
+						<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+					</ng-container>
+				</ng-template>
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+	<div class="grid-col-4">
+		<p lang langLabel="representantes:tipo" class="label">Tipo:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+				<vs-select-tipo-representante class="w-full"
+											  formControlName="codigoTipoRepresentante"></vs-select-tipo-representante>
+				<ng-template #combineTpl let-control>
+					<ng-container *ngIf="control.hasError('required')">
+						<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+					</ng-container>
+				</ng-template>
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+
+	<!--<div class="grid-col-1 flex items-center">
+		<p class="label" style="opacity: 0;">.</p>
+		<label nz-checkbox formControlName="principal">
+			<p lang langLabel="representantes:principal"> Es principal</p>
+		</label>
+	</div>-->
+	<div class="grid-col-2">
+		<p class="label" style="opacity: 0;">.</p>
+		<div class="flex items-center">
+		   <label nz-checkbox formControlName="principal">
+			  <p lang langLabel="representantes:principal"> Es principal</p>
+		   </label>
+		</div>
+	 </div>
+
+	<div class="grid-col-2">
+		<p class="label" style="opacity: 0;">.</p>
+		<button nz-button class="w-full" nzType="primary" (click)="IngresarFila()">
+			<div lang langLabel="representantes:insertar-representante" *ngIf="_accion === 'Insertar'; else elseBlock">Insertar
+			</div>
+			<ng-template #elseBlock>
+				<div lang langLabel="representantes:actualizar-representante">
+					Actualizar
+				</div>
+			</ng-template>
+		</button>
+	</div>
+</form>
+
+
+<div class="w-full pt-30">
+	<vs-table [showPagination]="false" [data]="listaRepresentantes" [loading]="cargando.listar">
+		<thead>
+		<tr>
+			<th lang langLabel="representantes:tipo">Tipo</th>
+			<th lang langLabel="representantes:persona">Persona</th>
+			<th lang langLabel="representantes:nro-identificacion">Nro. Identificación</th>
+			<th class="min-size"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<ng-container *ngFor="let data of listaRepresentantes; let i = index">
+			<ng-container *ngIf="data.accion != accionesHtml.Eliminar">
+				<tr>
+					<td>{{ ObtenerTipoRelacionPorCodigo(data.objeto.codigoTipoRepresentante) }}</td>
+					<td [ngClass]="{'font-medium': data.objeto.principal}">
+						{{ data.objeto.nombres }} {{ data.objeto.apellidoPaterno }} {{ data.objeto.apellidoMaterno }}
+						<ng-container *ngIf="data.objeto.principal">
+							<nz-tag lang langLabel="representantes:principal" nzColor="#00a761" class="m-0 ml-7">
+								PRINCIPAL
+							</nz-tag>
+						</ng-container>
+					</td>
+					<td>{{ data.objeto.numeroIdentificacion }}</td>
+					<td>
+						<div class="flex items-center flex-no-wrap">
+							<button nz-tooltip [nzTooltipTitle]="titleVerInformacion" nz-button nzType="text"
+									(click)="VerInformacionPersona(data.objeto.codigoRepresentante)">
+								<i nz-icon nzType="eye" nzTheme="outline"></i>
+							</button>
+							<button
+								nz-popconfirm
+								[nzPopconfirmTitle]="titleConfirmarEliminar"
+								(nzOnConfirm)="EliminarFila(i)"
+								nz-tooltip [nzTooltipTitle]="titleEliminar"
+								nz-button
+								nzType="text"
+								class="text-red-600 hover:text-red-800"
+							>
+								<i nz-icon nzType="delete" nzTheme="outline"></i>
+							</button>
+							<ng-template #titleVerInformacion>
+								<span lang langLabel="vs-tooltip:ver-informacion">Ver información</span>
+							</ng-template>
+							<ng-template #titleEliminar>
+								<span lang langLabel="vs-tooltip:eliminar">Eliminar</span>
+							</ng-template>
+							<ng-template #titleConfirmarEliminar>
+								<span lang langLabel="vs-tooltip:confirmar-eliminar">Eliminar</span>
+							</ng-template>
+						</div>
+					</td>
+				</tr>
+			</ng-container>
+		</ng-container>
+		</tbody>
+	</vs-table>
+</div>
+
+<!--<div class="w-full pt-20 text-right" *ngIf="mostrarGuardar">-->
+<!--	<button lang langLabel="representantes:guardar-cambios" nz-button nzType="primary" [nzLoading]="cargando.guardar"-->
+<!--			class="vs-btn-green" (click)="GuardarBase()">Guardar cambios-->
+<!--	</button>-->
+<!--</div>-->

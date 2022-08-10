@@ -1,0 +1,430 @@
+<div class="w-full mb-10 flex items-center flex-no-wrap justify-between">
+	<h3 lang langLabel="direccion:titulo" class="font-bold m-0 display-block w-full m-0">Direcciones</h3>
+
+	<button (click)="ObtenerTodo()" nz-button nzType="text" nz-tooltip [nzTooltipTitle]="titleTemplate">
+		<i nz-icon nzType="reload" nzTheme="outline"></i>
+	</button>
+	<ng-template #titleTemplate>
+	<span lang langLabel="vs-tooltip:recargar">
+		Volver a cargar
+	</span>
+	</ng-template>
+</div>
+
+<form [formGroup]="form">
+	<div class="grid flex-align-items-center">
+
+		<div class="grid-col-3">
+			<p lang langLabel="direccion:tipo-residencia" class="label">Tipo de residencia</p>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+					<vs-select-tipo-residencia (ngModelChange)="tipoResidencia($event)"
+											   class="w-full"
+											   formControlName="codigoTipoResidencia"></vs-select-tipo-residencia>
+				</nz-form-control>
+			</nz-form-item>
+		</div>
+
+		<ng-container
+			*ngIf="form.get('codigoTipoResidencia')?.value == 1 || form.get('codigoTipoResidencia')?.value == 2 ">
+
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:bienes-inmuebles" class="label">Bienes Inmuebles</p>
+				<vs-select-bienes-inmuebles [codigoPersona]="this.codigoPersona"
+											(bienInmuebleChange)="bienInmuebleCapture($event)"
+											class="w-full" formControlName="bienInmueble"></vs-select-bienes-inmuebles>
+			</div>
+
+		</ng-container>
+
+		<div class="grid-col-6">
+			<p lang langLabel="direccion:lugar-residencia" class="label">Lugar de residencia:</p>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+					<vs-select-lugar formControlName="lugar" class="w-full"></vs-select-lugar>
+					<ng-template #combineTpl let-control>
+						<ng-container *ngIf="control.hasError('required')">
+							<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+						</ng-container>
+					</ng-template>
+				</nz-form-control>
+			</nz-form-item>
+		</div>
+
+		<div class="grid-col-3">
+			<p lang langLabel="direccion:sector" class="label">Sector:</p>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+					<input vs-trim nz-input formControlName="sector" id="txtSector" class="w-full">
+					<ng-template #combineTpl let-control>
+						<ng-container *ngIf="control.hasError('required')">
+							<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+						</ng-container>
+					</ng-template>
+				</nz-form-control>
+			</nz-form-item>
+		</div>
+
+		<div class="grid-col-9 grid">
+			<div class="grid-col-6">
+				<p lang langLabel="direccion:calle-principal" class="label">Calle Principal:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input vs-trim nz-input formControlName="callePrincipal" class="w-full">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+			<div class="grid-col-6">
+				<p lang langLabel="direccion:calle-secundaria" class="label">Calle Secundaria:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input vs-trim nz-input formControlName="calleSecundaria" class="w-full">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+		</div>
+
+		<div class="grid-col-3 grid">
+			<div class="grid-col-6">
+				<p lang langLabel="direccion:numero-casa" class="label">N. de Casa:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input vs-trim nz-input formControlName="numeroCasa" id="txtNumCasa" class="w-full">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+			<div class="grid-col-6">
+				<p lang langLabel="direccion:codigo-postal" class="label">Código Postal:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input vs-trim nz-input formControlName="codigoPostal" id="txtObservaciones">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+		</div>
+
+		<div class="grid-col-2">
+			<p lang langLabel="direccion:tipo-sector" class="label">Tipo de sector:</p>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+					<nz-radio-group formControlName="tipoSector" class="flex justify-between">
+						<label nz-radio nzValue="U">
+							<p lang langLabel="direccion:urbano">Urbano</p>
+						</label>
+						<label nz-radio nzValue="R">
+							<p lang langLabel="direccion:rural">Rural</p>
+						</label>
+					</nz-radio-group>
+					<ng-template #combineTpl let-control>
+						<ng-container *ngIf="control.hasError('required')">
+							<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+						</ng-container>
+					</ng-template>
+				</nz-form-control>
+			</nz-form-item>
+		</div>
+
+		<div class="grid-col-1 flex items-center">
+			<label nz-checkbox formControlName="esMarginal">Marginal</label>
+		</div>
+
+		<ng-container *ngIf="form.get('tipoSector')?.value == 'R'">
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:comunidad" class="label">Comunidad:</p>
+				<nz-form-item>
+					<nz-form-control nzErrorTip="El campo es requerido">
+						<input vs-trim nz-input class="w-full" formControlName="comunidad" type="text">
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+		</ng-container>
+
+
+		<div class="grid-col-9 grid">
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:longitud" class="label">Longitud:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input type="number" nz-input formControlName="longitud" class="w-full">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:latitud" class="label">Latitud:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<input type="number" nz-input formControlName="latitud" class="w-full">
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:fecha-residencia" class="label">Fecha de Residencia</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+						<nz-date-picker
+							[nzDisabledDate]="disabledDate"
+							(ngModelChange)="calcularEdad($event, false)" [nzFormat]="dateFormat"
+							nzPlaceHolder="dd/MM/yyyy" class="w-full"
+							formControlName="fechaInicialResidencia"></nz-date-picker>
+						<ng-template #combineTpl let-control>
+							<ng-container *ngIf="control.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+			<div class="grid-col-1">
+				<p lang langLabel="direccion:tiempo" class="label">Tiempo:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+						{{edadCalculada !== "" ? edadCalculada : '-'  }}
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+		</div>
+
+		<div class="grid-col-6">
+			<p lang langLabel="direccion:referencia" class="label">Referencia:</p>
+			<nz-form-item>
+				<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+					<textarea vs-trim nz-input formControlName="referencia" class="w-full" nzAutosize></textarea>
+					<ng-template #combineTpl let-control>
+						<ng-container *ngIf="control.hasError('required')">
+							<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+						</ng-container>
+					</ng-template>
+				</nz-form-control>
+			</nz-form-item>
+		</div>
+
+		<div class="grid-col-1">
+			<p class="label" style="opacity: 0;">.</p>
+			<div class="flex items-center">
+				<label nz-checkbox formControlName="principal">
+					<p lang langLabel="direccion:principal">Principal</p>
+				</label>
+			</div>
+		</div>
+
+		<ng-container *ngIf="form.get('codigoTipoResidencia')?.value == 3">
+			<div class="grid-col-2">
+				<p lang langLabel="direccion:valor-arriendo" class="label">Valor de Arriendo:</p>
+
+				<nz-input-number decimalSeparator class="w-full" [nzMin]="0" formControlName="valorArriendo"
+								 [nzFormatter]="formatterDollar" [nzParser]="parserDollar">
+				</nz-input-number>
+
+			</div>
+		</ng-container>
+		<
+		<div class="grid flex-align-items-center" formGroupName="telefonoFijo">
+
+			<div *ngIf="form.get('lugar')?.value" class="grid-col-2">
+				<p lang langLabel="direccion:codigo-area" class="label">Código area:</p>
+				<p class="m-0">
+					{{ form.get('lugar')!.value.codigoCiudad ?? '*' }}
+				</p>
+			</div>
+
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:codigo-operadora" class="label">Codigo de operadora</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl3">
+						<vs-select-operadora-fija class="w-full"
+												  formControlName="codigoOperadora"></vs-select-operadora-fija>
+						<ng-template #combineTpl3 let-control2>
+							<ng-container *ngIf="control2.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+			<div class="grid-col-3">
+				<p lang langLabel="direccion:numero-telefono" class="label">Numero de telefono:</p>
+				<nz-form-item>
+					<nz-form-control nzHasFeedback [nzErrorTip]="combineTpl4">
+						<input vs-trim nz-input formControlName="numero" class="w-full">
+						<ng-template #combineTpl4 let-control3>
+							<ng-container *ngIf="control3.hasError('required')">
+								<p lang langLabel="vs-formulario:requerido">El campo es requerido</p>
+							</ng-container>
+							<ng-container *ngIf="control3.hasError('maxlength')">
+								<p lang langLabel="vs-formulario:maxLength-veinte">La longitud máxima del texto es 20
+									caracteres</p>
+							</ng-container>
+						</ng-template>
+					</nz-form-control>
+				</nz-form-item>
+			</div>
+
+			<div class="grid-col-4">
+				<p lang langLabel="direccion:observacion" class="label">Observacion de telefono:</p>
+				<nz-form-item>
+					<textarea vs-trim nz-input formControlName="observaciones" class="w-full" nzAutosize></textarea>
+				</nz-form-item>
+			</div>
+		</div>
+
+		<div class="grid-col-2">
+			<p class="label" style="opacity: 0;">.</p>
+			<div class="flex w-full items-center flex-no-wrap">
+				<button nz-button class="w-full" nzType="primary" (click)="IngresarFila()">
+					<div lang langLabel="direccion:insertar-direccion" *ngIf="_accion === 'Insertar'; else elseBlock">
+						Insertar
+					</div>
+					<ng-template #elseBlock>
+						<div lang langLabel="direccion:actualizar-direccion">
+							Actualizar
+						</div>
+					</ng-template>
+				</button>
+				<button *ngIf="_accion !== 'Insertar'"
+						(click)="ResetearVista()"
+						nz-tooltip nzTooltipTitle="Nuevo registro"
+						nz-button style="width: 4rem;" class="ml-7"><i nz-icon nzType="plus" nzTheme="outline"></i>
+				</button>
+			</div>
+		</div>
+
+
+	</div>
+</form>
+
+
+<div class="w-full pt-20">
+	<nz-table [nzShowPagination]="false" nzSize="small" [nzLoading]="cargando.listar" [nzData]="listaDirecciones">
+		<thead>
+		<tr>
+			<th lang langLabel="direccion:tipo-residencia">Tipo de residencia</th>
+			<th lang langLabel="direccion:parroquia">Parroquia</th>
+			<th lang langLabel="direccion:sector">Sector</th>
+			<th lang langLabel="direccion:calles">Calles</th>
+			<th lang langLabel="direccion:tiempo-residencia">Tiempo de residencia</th>
+			<th lang langLabel="celulares:codigo-pais">Código Pais</th>
+			<th lang langLabel="direccion:telefono">Teléfono</th>
+			<th class="min-size"></th>
+		</tr>
+		</thead>
+		<tbody>
+		<ng-container *ngFor="let data of listaDirecciones; let i = index">
+			<ng-container *ngIf="data.accion != accionesHtml.Eliminar">
+				<tr>
+					<td>{{ ObtenerNombreTpoResidenciaPorCodigo(data.objeto.codigoTipoResidencia) }}</td>
+					<td>{{ data.objeto.nombreParroquia}}</td>
+					<td>{{ data.objeto.sector }}</td>
+					<td>{{ data.objeto.callePrincipal }} y {{ data.objeto.calleSecundaria }}
+						- {{ data.objeto.numeroCasa }}
+						<ng-container *ngIf="data.objeto.principal">
+							<nz-tag lang langLabel="direccion:principal" nzColor="#00a761" class="m-0 ml-7">PRINCIPAL
+							</nz-tag>
+						</ng-container>
+					</td>
+
+					<td>{{ calcularEdad(data.objeto.fechaInicialResidencia, true) }}</td>
+					<!--<td>
+						<ng-container *ngIf="data.objeto.telefonoFijo">
+							<ng-container *ngFor="let telefono of data.objeto.telefonoFijo.numero">
+								{{ telefono }} -
+							</ng-container>
+						</ng-container>
+					</td>-->
+					<td>{{ data.objeto.codigoPais }}</td>
+					<td>{{ data.objeto.numeroTelFijo }}</td>
+
+					<td>
+						<div class="flex items-center flex-no-wrap">
+							<button
+								nz-tooltip [nzTooltipTitle]="titleEditar" nz-button nzType="text" class="mr-7"
+								(click)="EditarFila(data,i)">
+								<i nz-icon nzType="edit" nzTheme="outline"></i>
+							</button>
+							<button
+								nz-popconfirm
+								[nzPopconfirmTitle]="titleConfirmarEliminar"
+								(nzOnConfirm)="EliminarFila(i)"
+								nz-tooltip [nzTooltipTitle]="titleEliminar"
+								nz-button
+								nzType="text"
+								class="text-red-600 hover:text-red-800"
+							>
+								<i nz-icon nzType="delete" nzTheme="outline"></i>
+							</button>
+							<button nz-tooltip [nzTooltipTitle]="titleMostrarMapa" nz-button nzType="text"
+									(click)="mostrarMapa(data)">
+								<i nz-icon>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+										 viewBox="0 0 24 24" fill="none" stroke="#0F55EC" stroke-width="2"
+										 stroke-linecap="round" stroke-linejoin="round"
+										 class="feather feather-map-pin">
+										<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+										<circle cx="12" cy="10" r="3"></circle>
+									</svg>
+								</i>
+							</button>
+							<ng-template #titleEditar>
+								<span lang langLabel="vs-tooltip:editar">Editar</span>
+							</ng-template>
+							<ng-template #titleEliminar>
+								<span lang langLabel="vs-tooltip:eliminar">Eliminar</span>
+							</ng-template>
+							<ng-template #titleMostrarMapa>
+								<span lang langLabel="vs-tooltip:mostrar-mapa">Mostrar Mapa</span>
+							</ng-template>
+							<ng-template #titleConfirmarEliminar>
+								<span lang langLabel="vs-tooltip:confirmar-eliminar">Eliminar</span>
+							</ng-template>
+						</div>
+					</td>
+				</tr>
+			</ng-container>
+		</ng-container>
+		</tbody>
+
+	</nz-table>
+</div>
+
+<div class="w-full pt-20 text-right" *ngIf="mostrarGuardar">
+	<button nz-button nzType="primary" [nzLoading]="cargando.guardar" class="vs-btn-green" (click)="GuardarBase()">
+		Guardar cambios
+	</button>
+</div>
+
+

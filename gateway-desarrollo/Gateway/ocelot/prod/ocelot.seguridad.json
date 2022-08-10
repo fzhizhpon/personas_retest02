@@ -1,0 +1,361 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/Usuarios",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/usuarios",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/Usuarios/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/usuarios/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/autenticacion/roles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/autenticacion/roles",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/Autenticacion/iniciar-sesion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/autenticacion/iniciar-sesion",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/login-usuario",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/login-usuario",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/login-cedula",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/login-cedula",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/login",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/cerrar-sesion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/cerrar-sesion",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/validar-token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/validar-token",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/refresh-token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/refresh-token",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/mensajes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/mensajes",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/seguridad/opciones-sistema",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/seguridad/opciones-sistema",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/parametros",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/parametros",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/parametros/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/parametros/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/Roles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/roles",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/Roles/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/roles/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/OpcionesSistema",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/OpcionesSistema",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-seguridad/api/OpcionesSistema/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/OpcionesSistema/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ]
+}

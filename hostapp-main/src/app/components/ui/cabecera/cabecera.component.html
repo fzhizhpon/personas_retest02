@@ -1,0 +1,46 @@
+<div style="height: 5.3rem;" class="bg-white w-full main-header border-b-1 border-solid border-theme-bluegray-300 flex flex-no-wrap">
+	<div *ngIf="showMenuButton" (click)="clickMenu()" class="bg-white flex items-center cursor-pointer hover:bg-theme-bluegray-200 hover:text-theme-primary border-r-1 border-solid border-theme-bluegray-300 px-15">
+		<i nz-icon nzType="menu" class="text-theme-black-100 hover:text-theme-primary text-xl w-30 m-0" style="line-height: 1rem;" nzTheme="outline"></i>
+	</div>
+	<div class="flex items-center pl-15">
+		<img class="w-25 display-block m-0" src="./assets/icono-vimacoop.svg">
+	</div>
+	<div class="w-full px-20 py-5 flex items-center">
+		<div class="w-full flex justify-between flex-no-wrap items-center">
+			<div class="flex items-center">
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Empresa: Vimasistem</p>
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Agencia: Totoracocha</p>
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Sucursal: Administracion general</p>
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Perfil: PGR</p>
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Fecha: 12/12/2021</p>
+				<p class="text-smd font-medium mr-20 m-0 text-theme-black-200 hover:text-black">Periodo 2021</p>
+			</div>
+
+			<div class="flex items-center flex-no-wrap">
+				<p (click)="cerrarSesion()" class="font-medium cursor-pointer py-7 px-10 rounded-sm hover:bg-red-100 m-0 text-red-800 text-smd">Cerrar Sesion</p>
+
+				<!-- <div class="flex items-center flex-no-wrap w-full pl-15 border-t-1 border-solid border-theme-bluegray-300 px-20 py-15"> -->
+					<img [src]="'https://avatars.dicebear.com/api/initials/Vimasistem.svg'" class="display-block border-solid border-theme-bluegray-300 w-35 h-35 rounded-full" style="border-width: 0.3rem;">
+					<!-- <p class="text-black display-block m-0">{{ infoUsuario.usuario }}</p> -->
+				<!-- </div> -->
+
+				<button *ngIf="showNotificationsBtn"
+				nz-popover
+				nzPopoverTrigger="click"
+				nzPopoverPlacement="bottomRight"
+				nzPopoverOverlayClassName="notifications-background"
+				[nzPopoverArrowPointAtCenter]="true"
+				[nzPopoverContent]="notifications" nz-button nzType="text" class="ml-7">
+					<i nz-icon nzType="bell" nzTheme="outline"></i>
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<ng-template #notifications>
+	<div style="max-width: 100%; width: 50rem;">
+		<vs-panel-notificaciones></vs-panel-notificaciones>
+	</div>
+</ng-template>

@@ -1,0 +1,25 @@
+:root {
+	--bluegray-100: rgb(244, 246, 248);
+	--bluegray-200: rgb(235, 238, 244);
+	--bluegray-300: rgb(223, 225, 235);
+	--bluegray-400: rgb(160, 171, 193);
+	--bluegray-500: rgb(96, 113, 147);
+
+	--corp-primary: rgb(255, 145, 0);
+	--black-100: rgb(56, 79, 116);
+	--black-200: rgb(51, 58, 72);
+	--black-300: rgb(14, 24, 43);
+	--shadow-ligth: rgb(216, 220, 228);
+}
+
+@import "variables";
+
+@import "../common";
+
+@import "colors";
+@import "general";
+@import "texts";
+@import "border";
+@import "positions";
+@import "shadows";
+@import "components";

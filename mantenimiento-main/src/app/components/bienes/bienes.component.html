@@ -1,0 +1,28 @@
+<div class="w-full mb-10 flex items-center flex-no-wrap justify-between">
+	<h3 lang langLabel="bienes:nombre-componente" class="font-bold m-0 display-block w-full m-0">Bienes</h3>
+</div>
+
+<div class="w-full">
+	<nz-tabset nzType="card" [(nzSelectedIndex)]="tabSeleccionado">
+		<nz-tab [nzTitle]="titleBienMueble">
+			<ng-template #titleBienMueble>
+				<p lang langLabel="bienes:bienes-muebles" class="m-0">Bienes Muebles</p>
+			</ng-template>
+			<pers-bienes-muebles [mostrarGuardar]="true" [mostrarGuardar]="mostrarGuardar" [codigoPersona]="codigoPersona"></pers-bienes-muebles>
+		</nz-tab>
+
+		<nz-tab [nzTitle]="titleBienInmueble">
+			<ng-template #titleBienInmueble>
+				<p lang langLabel="bienes:bienes-inmuebles" class="m-0">Bienes Inmuebles</p>
+			</ng-template>
+			<pers-bienes-inmuebles  [mostrarListar]="true" [mostrarGuardar]="mostrarGuardar" [codigoPersona]="codigoPersona"></pers-bienes-inmuebles>
+		</nz-tab>
+
+		<nz-tab [nzTitle]="titleBienIntangible">
+			<ng-template #titleBienIntangible>
+				<p lang langLabel="bienes:bienes-intangibles" class="m-0">Bienes Intangibles</p>
+			</ng-template>
+			<pers-bienes-intangibles [mostrarGuardar]="false" [mostrarGuardar]="mostrarGuardar" [codigoPersona]="codigoPersona"></pers-bienes-intangibles>
+		</nz-tab>
+	</nz-tabset>
+</div>

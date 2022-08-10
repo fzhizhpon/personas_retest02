@@ -1,0 +1,18 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/reportesCarbone/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "micro-reportes-carbone",
+          "Port": 4000
+        }
+      ],
+      "UpstreamPathTemplate": "/reportesCarbone/{everything}",
+      "UpstreamHttpMethod": [
+        "POST"
+      ]
+    }
+  ]
+}

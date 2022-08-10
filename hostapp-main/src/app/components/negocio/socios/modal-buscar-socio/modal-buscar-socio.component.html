@@ -1,0 +1,85 @@
+<div *nzModalTitle class="w-full">
+	<h3 class="font-bold w-full display-block m-0">Búsqueda de socios</h3>
+</div>
+
+<div class="w-full">
+
+	<div class="flex w-full items-center flex-no-wrap mb-15">
+		<nz-radio-group>
+			<label class="flex flex-no-wrap" nz-radio nzValue="A">Identificación</label>
+			<label class="flex flex-no-wrap" nz-radio nzValue="B">Nombres</label>
+			<label class="flex flex-no-wrap" nz-radio nzValue="C">Código</label>
+		</nz-radio-group>
+
+		<div class="ml-7 w-full flex items-center flex-no-wrap">
+			<input (keydown.enter)="buscarSocio()" placeholder="Ingrese un criterio de búsqueda" nz-input type="text" class="w-full">
+			<button (click)="buscarSocio()" nz-button nzType="primary" class="ml-7">
+				<i nz-icon nzType="search" nzTheme="outline"></i>
+				Buscar
+			</button>
+		</div>
+	</div>
+
+	<ng-container *ngIf="false">
+		<table class="table w-full border-1 border-solid border-theme-bluegray-300">
+			<thead>
+				<tr>
+					<th class="min-size text-center font-medium px-7 py-7 bg-theme-bluegray-200 border-b-1 border-solid border-theme-bluegray-300">Código</th>
+					<th class="font-medium px-7 py-7 bg-theme-bluegray-200 border-b-1 border-solid border-theme-bluegray-300">Nombre completo</th>
+					<th class="min-size font-medium px-7 py-7 bg-theme-bluegray-200 border-b-1 border-solid border-theme-bluegray-300"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let i of socios">
+					<tr>
+						<td class="min-size text-center px-7 py-5 border-b-1 border-solid border-theme-bluegray-300">{{ i.id }}</td>
+						<td class="px-7 py-5 border-b-1 border-solid border-theme-bluegray-300">{{ i.name }}</td>
+						<td class="min-size px-7 py-5 border-b-1 border-solid border-theme-bluegray-300">
+							<div class="show-on-hover">
+								<button (click)="seleccionarSocio(i.id)" nz-tooltip nzTooltipTitle="Seleccionar" class="w-35 text-theme-primary" nz-button nzType="text"><i nz-icon nzType="select" nzTheme="outline"></i></button>
+								<button nz-tooltip nzTooltipTitle="Editar socio" class="w-35 text-orange-700" nz-button nzType="text"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
+							</div>
+						</td>
+					</tr>
+				</ng-container>
+			</tbody>
+		</table>
+	</ng-container>
+
+	<ng-container>
+		<nz-table
+			#nzTable
+			[nzLoading]="cargando"
+			class="w-full table"
+			[nzData]="socios"
+			nzSize="small"
+			[nzShowPagination]="false">
+			<thead>
+				<tr>
+					<th class="bg-theme-bluegray-300 min-size" style="text-align: center">Código</th>
+					<th class="bg-theme-bluegray-300">Nombre</th>
+					<th class="bg-theme-bluegray-300 min-size"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let i of nzTable.data">
+					<tr>
+						<td class="text-center">{{ i.id }}</td>
+						<td>{{ i.name }}</td>
+						<td class="min-size">
+							<div class="show-on-hover">
+								<button (click)="seleccionarSocio(i.id)" nz-tooltip nzTooltipTitle="Seleccionar" class="w-35 text-theme-primary" nz-button nzType="text"><i nz-icon nzType="select" nzTheme="outline"></i></button>
+								<button nz-tooltip nzTooltipTitle="Editar socio" class="w-35 text-orange-700" nz-button nzType="text"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
+							</div>
+						</td>
+					</tr>
+				</ng-container>
+			</tbody>
+		</nz-table>
+	</ng-container>
+
+</div>
+
+<div *nzModalFooter class="w-full flex items-center justify-end">
+	<button (click)="cerrarModal()" nz-button>Cancelar</button>
+</div>

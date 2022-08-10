@@ -1,0 +1,178 @@
+<div [ngClass]="{'sticky': sticky}" [style.top]="sticky ? (stickyPosition.top ?? 'auto') : 'inherit'"
+	 [style.left]="sticky ? (stickyPosition.left ?? 'auto') : 'inherit'"
+	 [style.bottom]="sticky ? (stickyPosition.bottom ?? 'auto') : 'inherit'"
+	 [style.right]="sticky ? (stickyPosition.right ?? 'auto') : 'inherit'"
+	 class="bg-white w-full mr-15 p-10 rounded-sm border-1 border-solid border-theme-bluegray-300"
+	 [style.width]="width">
+
+	<ng-container *ngIf="_codigoPersona; else noSeleccionada">
+		<ng-container *ngIf="_codigoTipoPersona === 1">
+			<nz-spin nzTip="Cargando" [nzSpinning]="isLoading">
+				<div class="w-full mb-10 flex items-center flex-no-wrap">
+					<p lang langLabel="persona:codigo-persona" class="label mb-0 mr-7">Código Persona: </p>
+					<span class="m-0 font-bold text-theme-primary">{{ persona?.codigoPersona }}</span>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:ultima-actualizacion" class="label mb-0">Última actualización:</p>
+					<p *ngIf="persona?.fechaUltimaActualizacion" class="label mb-0 font-bold text-green-800">{{
+						persona?.fechaUltimaActualizacion | date:'dd/MM/yyyy HH:mm' }}</p>
+				</div>
+
+				<ng-container *ngIf="persona.codigoDocumento && imagen.frontal">
+					<div class="flip-container w-full mb-10">
+						<div class="flip-image w-full text-center" [ngClass]="{'flip-show-back': !showFrontImage}">
+							<div *ngIf="persona?.fotoIdentificacion?.frontal"
+								 class="flip-front overflow-hidden w-full display-block mx-auto">
+								<vs-document-viewer class="w-full"
+													[codigoDocumento]="persona.fotoIdentificacion.frontal"></vs-document-viewer>
+							</div>
+							<div *ngIf="persona?.fotoIdentificacion?.posterior"
+								 class="flip-back overflow-hidden w-full display-block mx-auto">
+								<vs-document-viewer class="w-full"
+													[codigoDocumento]="persona.fotoIdentificacion.posterior"></vs-document-viewer>
+							</div>
+						</div>
+						<div (click)="showFrontImage = !showFrontImage" class="swap">
+							<i nz-icon nzType="retweet" nzTheme="outline"></i>
+						</div>
+					</div>
+				</ng-container>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:tipo-documento" class="label mb-0">Tipo de documento:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.tipoIdentificacion }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:numero-identificacion" class="label mb-0">Nro. Identificación:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.numeroIdentificacion }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:nombres" class="label mb-0">Nombres:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.nombres}}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:apellido-paterno" class="label mb-0">Apellido paterno:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.apellidoPaterno }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:apellido-materno" class="label mb-0">Apellido materno:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.apellidoMaterno }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:fecha-nacimiento" class="label mb-0">Fecha nacimiento:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.fechaNacimiento |
+						date:'dd-MM-yyyy'
+						}}
+						,{{ edadCalculada }}</p>
+				</div>
+
+				<div class="w-full">
+					<p lang langLabel="persona:correo" class="label mb-0">Correo electrónico:</p>
+					<p nz-tooltip [nzTooltipTitle]="persona?.correoElectronico"
+					   class="label mb-0 font-medium text-theme-primary w-full text-overflow">{{
+						persona?.correoElectronico }}</p>
+				</div>
+
+			</nz-spin>
+		</ng-container>
+
+		<ng-container *ngIf="_codigoTipoPersona === 2">
+			<nz-spin nzTip="Cargando" [nzSpinning]="isLoading">
+				<div class="w-full mb-10 flex items-center flex-no-wrap">
+					<p lang langLabel="persona:codigo-persona" class="label mb-0 mr-7">Código Persona: </p>
+					<span class="m-0 font-bold text-theme-primary">{{ persona?.codigoPersona }}</span>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:razon-social" class="label mb-0">Razón social:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.razonSocial }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:numero-identificacion" class="label mb-0">Nro. Identificación:</p>
+					<p class="label mb-0 font-medium text-theme-primary">{{ persona?.numeroIdentificacion }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:fecha-constitucion" class="label mb-0">Fecha constitución:</p>
+					<p *ngIf="persona?.fechaConstitucion" class="label mb-0 font-bold text-green-800">{{
+						persona?.fechaConstitucion | date:'dd/MM/yyyy HH:mm' }}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:objeto-social" class="label mb-0">Objeto Social:</p>
+					<p *ngIf="persona?.objetoSocial" class="label mb-0 font-medium text-theme-primary">{{
+						persona?.objetoSocial}}</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:finalidad-lucro" class="label mb-0">Finalidad de lucro:</p>
+
+					<div *ngIf="persona?.finalidadLucro;else elseTodasOpciones">
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:si">Si</p>
+					</div>
+					<ng-template #elseTodasOpciones>
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:no">No</p>
+					</ng-template>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:fecha-constitucion" class="label mb-0">Tipo sociedad:</p>
+					<p *ngIf="persona?.tipoSociedad" class="label mb-0 font-medium text-theme-primary">
+						{{ ObtenerNombreTipoSociedad(persona?.tipoSociedad) }}
+					</p>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:obligado-contabilidad" class="label mb-0">Obligado a llevar contabilidad:
+					</p>
+					<div *ngIf="persona?.obligadoLlevarContabilidad;else elseTodasOpciones">
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:si">Si</p>
+					</div>
+					<ng-template #elseTodasOpciones>
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:no">No</p>
+					</ng-template>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:agente-retencion" class="label mb-0">Agente de retención:</p>
+					<div *ngIf="persona?.agenteRetencion;else elseTodasOpciones">
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:si">Si</p>
+					</div>
+					<ng-template #elseTodasOpciones>
+						<p class="label mb-0 font-medium text-theme-primary" lang langLabel="seg-def-roles:no">No</p>
+					</ng-template>
+				</div>
+
+				<div class="w-full mb-10">
+					<p lang langLabel="persona:direccion-web" class="label mb-0">Dirección web:</p>
+					<p *ngIf="persona?.direccionWeb" class="label mb-0 font-medium text-theme-primary">{{
+						persona?.direccionWeb}}</p>
+				</div>
+
+			</nz-spin>
+		</ng-container>
+	</ng-container>
+</div>
+
+<ng-template #noSeleccionada>
+
+	<div class="w-full flex pt-12 items-center flex-no-wrap mb-7">
+		<div class="w-full text-center">
+			<i nz-icon style="font-size: 4rem;" class="text-theme-primary" nzType="user-switch" nzTheme="outline"></i>
+		</div>
+
+	</div>
+
+	<div class="mb-10 w-full flex items-center flex-no-wrap">
+		<p lang langLabel="persona:no-seleccionada" style="opacity: 0.8" class="text-center display-block label">
+			Seleccione una persona para visualizar la información.</p>
+	</div>
+
+</ng-template>

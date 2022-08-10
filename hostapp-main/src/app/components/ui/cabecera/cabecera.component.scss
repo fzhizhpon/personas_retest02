@@ -1,0 +1,15 @@
+@import "../../../styles/VScss/variables";
+
+.main-header {
+	box-shadow: 0 0 5px var(--shadow-ligth);
+}
+
+.notifications-background {
+	& .ant-popover-content {
+		& .ant-popover-inner {
+			div .ant-popover-inner-content {
+				padding: 0 !important;
+			}
+		}
+	}
+}

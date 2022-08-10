@@ -1,0 +1,46 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/micro-cuentas/api",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/cuentas",
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-cuentas/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/cuentas/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE",
+        "PUT",
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ]
+}

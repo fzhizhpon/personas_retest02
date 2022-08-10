@@ -1,0 +1,16 @@
+<div class="w-full flex items-center flex-no-wrap">
+	<input
+	[placeholder]="placeholder"
+	[disabled]="isDisabled"
+	[readonly]="isReadonly"
+	[ngModel]="value"
+	(ngModelChange)="change($event)"
+	nz-input
+	class="w-full">
+
+	<div *ngIf="mostrarBusqueda" class="ml-7">
+		<button (click)="abrirModalBusqueda()" [nzLoading]="loading" [disabled]="isDisabled || isReadonly" nz-button class="w-35" nzType="primary" id="brnSectorJur">
+			<i nz-icon nzType="search" nzTheme="outline"></i>
+		</button>
+	</div>
+</div>

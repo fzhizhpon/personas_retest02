@@ -1,0 +1,285 @@
+<div class="w-full h-full">
+	<vs-tabs bodyClass="w-full p-20 relative" [(index)]="tabSelected"
+			 [leftLayout]="infoPersona"
+			 [topLayout]="tabHeader">
+
+		<vs-tab label="Datos Generales" icon="audit" [disabledLayouts]="{left: true}">
+			<pers-datos-generales [codigoPersona]="codigoPersona"
+								  (codigoPersonaChange)="abrirBusquedaPersona($event)"></pers-datos-generales>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Direcciones" icon="audit">
+			<ng-container>
+				<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+					<pers-direccion [mostrarGuardar]="false" [codigoPersona]="codigoPersona"></pers-direccion>
+				</div>
+				<!-- BOTONES -->
+				<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+			</ng-container>
+		</vs-tab>
+
+		<vs-tab label="Celulares" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-celulares [mostrarGuardar]="false" [codigoPersona]="codigoPersona"></pers-celulares>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Correos Electrónicos" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-correos-electronicos [mostrarGuardar]="false"
+										   [codigoPersona]="codigoPersona"></pers-correos-electronicos>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Representante / Apoderado / Interdicto" icon="audit">
+
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-representantes [mostrarGuardar]="false"
+									 [codigoPersona]="codigoPersona"></pers-representantes>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Bienes" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-bienes [mostrarGuardar]="false" [codigoPersona]="codigoPersona"></pers-bienes>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Familiares" icon="audit" [disabled]="codigoTipoPersona != null && codigoTipoPersona === 2">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-familiares [mostrarGuardar]="false" [codigoPersona]="codigoPersona"></pers-familiares>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Estado Financiero" icon="audit">
+			<ng-container *ngIf="tabSelected === 7">
+				<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+					<pers-estado-financiero [mostrarGuardar]="false"
+											[codigoPersona]="codigoPersona"></pers-estado-financiero>
+				</div>
+				<!-- BOTONES -->
+				<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+			</ng-container>
+		</vs-tab>
+
+		<vs-tab label="Trabajos" icon="audit" [disabled]="codigoTipoPersona != null && codigoTipoPersona === 2">
+			<ng-container>
+				<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+					<pers-trabajos [mostrarGuardar]="true" [codigoPersona]="codigoPersona"></pers-trabajos>
+				</div>
+				<!-- BOTONES -->
+				<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+			</ng-container>
+		</vs-tab>
+
+		<vs-tab label="Referencias Personales" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-referencia-personal [mostrarGuardar]="true"
+										  [codigoPersona]="codigoPersona"></pers-referencia-personal>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Referencias Financieras" icon="audit">
+			<ng-container>
+				<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+					<pers-referencia-financiera [mostrarGuardar]="false"
+												[codigoPersona]="codigoPersona"></pers-referencia-financiera>
+				</div>
+				<!-- BOTONES -->
+				<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+			</ng-container>
+
+		</vs-tab>
+
+		<vs-tab label="Referencias Comerciales" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-referencia-comercial [mostrarGuardar]="false"
+										   [codigoPersona]="codigoPersona"></pers-referencia-comercial>
+			</div>
+
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+
+		<vs-tab label="Información Adicional" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-informacion-adicional [mostrarGuardar]="false"
+											[codigoPersona]="codigoPersona"
+											[codigoModulo]="codigoModulo"></pers-informacion-adicional>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab label="Relación Institucional" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-relacion-institucion [codigoPersona]="codigoPersona"></pers-relacion-institucion>
+			</div>
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+
+		<vs-tab *ngIf="true" label="Documentos Digitalizados" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<app-digitalizacion-documentos [codigoComponente]="1" (onDocUpload)="recargarImagenes()"
+											   [codigoPersona]="codigoPersona"></app-digitalizacion-documentos>
+			</div>
+
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+
+		<vs-tab *ngIf="false" label="Consejo Accionistas" icon="audit">
+			<div class="w-full border-1 border-solid border-theme-bluegray-300 rounded-sm p-15 bg-white">
+				<pers-consejo-accionistas class="w-full"></pers-consejo-accionistas>
+			</div>
+
+			<!-- BOTONES -->
+			<ng-container *ngTemplateOutlet="bottonNavigation"></ng-container>
+		</vs-tab>
+	</vs-tabs>
+</div>
+
+<ng-template #tabHeader>
+	<div class="w-full mb-25 flex items-center flex-no-wrap justify-between">
+		<h3 lang langLabel="mock-personas:titulo" class="w-full m-0 font-bold">Mantenimiento de Personas</h3>
+		<app-panel-acciones orientacion="horizontal" ancho="auto" alto="auto"
+							[botones]="opciones"></app-panel-acciones>
+	</div>
+</ng-template>
+
+<ng-template #bottonNavigation>
+	<div *ngIf="codigoPersona && tabSelected !== 7" class="grid-col-12 pt-20 flex justify-between">
+		<button *ngIf="tabSelected > 0"
+				langTag="span"
+				(click)="tabSelected = tabSelected - 1" nz-button class="border-black">
+			<em nz-icon nzType="arrow-left" nzTheme="outline"></em>
+			<span lang langLabel="mock-personas:anterior">Anterior</span>
+		</button>
+		<div *ngIf="tabSelected == 0 "></div>
+		<button
+			*ngIf="tabSelected <= tabs.length - 2"
+			langTag="span"
+			(click)="tabSelected = tabSelected + 1"
+			nz-button class="vs-btn-black" nzType="primary">
+			<span lang langLabel="mock-personas:siguiente">Siguiente</span>
+			<em nz-icon nzType="arrow-right" nzTheme="outline"></em>
+		</button>
+	</div>
+</ng-template>
+
+<ng-template #infoPersona>
+	<app-persona
+		[sticky]="true"
+		[codigoPersona]="codigoPersona"
+		[codigoTipoPersona]="codigoTipoPersona"
+		[stickyValue]="{top: '2rem'}"></app-persona>
+</ng-template>
+
+<div *ngIf="guardando" style="z-index: 99999;"
+	 class="w-screen h-screen top-0 left-0 flex items-center justify-center overflow-auto fixed bg-white-alpha">
+
+	<div class="p-25">
+		<div style="max-width: 70rem; min-width: 45rem;"
+			 class="bg-white w-full border-1 border-solid border-theme-bluegray-300 p-15 rounded-sm">
+			<h4 lang langLabel="modal-guardar:guardando" class="font-bold text-center display-block mb-20">Guardando
+				cambios...</h4>
+
+			<nz-timeline>
+				<ng-container *ngFor="let item of registroCambios; let i = index">
+					<nz-timeline-item
+						[nzColor]="!item.finalizado ? 'gray' : (item.errores.length == 0 ? 'green' : 'red')">
+						<div *ngIf="i !== 12; else bloqueDG">
+							<ng-container *ngIf="!item.finalizado">
+								<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+									  class="m-0 font-bold">{{ item.nombre }}:</span>
+								&nbsp;
+								<span lang langLabel="modal-guardar:en-proceso">
+									En proceso
+								</span>
+							</ng-container>
+							<ng-container
+								*ngIf="item.finalizado && item.errores.length == 0 && item.realizados.length > 0; else noPoseeCambios">
+								<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+									  class="m-0 font-bold">{{ item.nombre }}:</span>
+								&nbsp;
+								<span lang langLabel="modal-guardar:operaciones-realizadas">
+									Operaciones realizadas
+								</span>
+								<ng-container *ngFor="let realizado of item.realizados">
+									<div
+										class="mt-5 w-full border-l-2 border-solid px-7 py-5 border-green-500 bg-greengray "
+									>
+										<p class="display-block m-0">{{ realizado }}</p>
+									</div>
+								</ng-container>
+							</ng-container>
+							<ng-template #noPoseeCambios>
+								<div
+									*ngIf="item.finalizado && item.realizados.length === 0 && item.errores.length == 0 && i !== 0">
+									<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+										  class="m-0 font-bold">{{ item.nombre }}:</span>
+									&nbsp;
+									<span lang langLabel="modal-guardar:sin-cambios">Sin cambios</span>
+								</div>
+							</ng-template>
+							<ng-container
+								*ngIf="item.finalizado && item.errores.length > 0">
+								<p class="display-block m-0">
+									<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+										  class="m-0 font-bold">{{ item.nombre }}:</span>
+									&nbsp;
+									<span lang langLabel="modal-guardar:no-guardado">No pudo ser guardado</span>
+								</p>
+								<div class="mt-5 w-full border-l-2 border-solid border-red-500 bg-redgray px-7 py-5">
+									<ng-container *ngFor="let err of item.errores">
+										<p class="display-block m-0">{{ err }}</p>
+									</ng-container>
+								</div>
+							</ng-container>
+							<ng-container *ngIf="i === 0 && !errorDatosGenerales">
+								<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+									  class="m-0 font-bold">{{ item.nombre }}:</span>
+								&nbsp;
+								<span lang langLabel="modal-guardar:guardado-exitoso">
+									Guardado exitosamente
+								</span>
+							</ng-container>
+						</div>
+						<ng-template #bloqueDG>
+							<ng-container>
+								<span lang [langLabel]="'modal-guardar:' + item.nombre.split(' ').join('-')"
+									  class="m-0 font-bold">{{ item.nombre }}:</span>
+								&nbsp;
+								<span lang langLabel="modal-guardar:guardado-exitoso">
+									Guardado exitosamente
+								</span>
+							</ng-container>
+						</ng-template>
+					</nz-timeline-item>
+				</ng-container>
+			</nz-timeline>
+
+			<div class="w-full text-center">
+				<button (click)="guardando = false" nz-button nzType="primary">Cerrar</button>
+			</div>
+		</div>
+	</div>
+
+</div>

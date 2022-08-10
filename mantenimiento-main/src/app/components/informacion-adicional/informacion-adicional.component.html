@@ -1,0 +1,48 @@
+<div class="w-full mb-10 flex items-center flex-no-wrap justify-between">
+	<h3 lang langLabel="informacion-adicional:titulo" class="font-bold m-0 display-block w-full m-0">Información
+		adicional</h3>
+
+	<button (click)="ObtenerTodo()" nz-button nzType="text" nz-tooltip [nzTooltipTitle]="titleTemplate">
+		<i nz-icon nzType="reload" nzTheme="outline"></i>
+	</button>
+	<ng-template #titleTemplate>
+		<span lang langLabel="vs-tooltip:recargar">
+			Volver a cargar
+		</span>
+	</ng-template>
+</div>
+<div class="w-full">
+	<nz-tabset nzTabPosition="left" [(nzSelectedIndex)]="tabSeleccionado" (nzSelectedIndexChange)="ObtenerInformacionAdicional($event)">
+		<ng-container *ngFor="let table of tablaComunesCabeceras">
+			<nz-tab [nzTitle]="table.descripcion">
+				<nz-spin [nzSpinning]="cargando.listar">
+					<div class="w-full table">
+						<tr>
+							<td  lang langLabel="informacion-adicional:descripcion" class="px-5 py-7 min-size font-bold text-theme-black-200">Descripción</td>
+							<td lang langLabel="informacion-adicional:observacion" class="px-5 pl-10 py-7 font-bold text-theme-black-200">Observaciones</td>
+						</tr>
+						<ng-container *ngFor="let data of table.detalles; let i = index">
+							<tr>
+								<td class="min-size py-7 px-5"><label
+										[ngModel]="data.objeto.estado"
+										(ngModelChange)="cambiarEstadoDetalle(i, $event)"
+										[nzDisabled]="data.objeto.codigoElemento == 0"
+										nz-checkbox>{{ data.objeto.descripcionElemento | titlecase }}</label></td>
+								<td class="py-7 px-5 pl-10">
+									<input class="w-full" nz-input
+									(ngModelChange)="this.tieneCambios = true"
+									[disabled]="data.objeto.codigoElemento == 0 || !data.objeto.estado" [(ngModel)]="data.objeto.observacion" type="text">
+								</td>
+							</tr>
+						</ng-container>
+					</div>
+				</nz-spin>
+			</nz-tab>
+		</ng-container>
+	</nz-tabset>
+
+</div>
+
+<div class="w-full pt-20 text-right" *ngIf="mostrarGuardar">
+	<button nz-button nzType="primary" [nzLoading]="cargando.guardar" class="vs-btn-green" (click)="GuardarBase()">Guardar cambios</button>
+</div>

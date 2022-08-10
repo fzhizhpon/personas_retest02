@@ -1,0 +1,71 @@
+<div
+	[style.width]="ancho"
+	[style.height]="alto"
+	[style.background]="color"
+	[ngClass]="{
+		'rounded-sm': redondeado,
+		'pt-7 pb-5': orientacion == 'vertical',
+		'px-7': orientacion == 'horizontal'
+	}"
+	class="flex items-center action-panel overflow-auto"
+	>
+	<div
+		class="w-full"
+		[ngClass]="{
+			'flex items-center flex-no-wrap': orientacion == 'horizontal'
+		}"
+	>
+		<ng-container *ngIf="!collapse">
+			<ng-container *ngFor="let btn of botones; let esUltimo = last">
+				<div
+					nz-tooltip
+					[nzTooltipTitle]="btn.label"
+					[nzTooltipPlacement]="orientacion == 'vertical' ? 'right' : 'bottom'"
+					class="action-panel-opt flex items-center w-full p-10"
+					[ngClass]="{
+						'mb-7': (!esUltimo || closable) && orientacion == 'vertical',
+						'mr-7': (!esUltimo || closable) && orientacion == 'horizontal',
+						'enabled cursor-pointer': !btn.deshabilitado,
+						'disabled cursor-not-allowed': btn.deshabilitado
+					}"
+					(click)="triggerEvent(btn)"
+				>
+					<i nz-icon
+					class="icon text-white w-full text-center"
+					[nzType]="btn.icono" nzTheme="outline"></i>
+
+					<p *ngIf="mostrarLabels" class="text-white display-block m-0 mt-5 text-center w-full">
+						{{ btn.label }}
+					</p>
+				</div>
+			</ng-container>
+		</ng-container>
+
+		<ng-container *ngIf="closable">
+			<div class="toggle-opt border-solid"
+			[ngClass]="{
+				'border-solid': !collapse,
+				'pt-7 border-t-1' : orientacion == 'vertical' && !collapse,
+				'pl-7 border-l-1' : orientacion == 'horizontal' && !collapse
+			}">
+				<div
+					(click)="collapse = !collapse"
+					nz-tooltip
+					[nzTooltipTitle]="!collapse ? 'Ocultar opciones' : 'Mostrar opciones'"
+					[nzTooltipPlacement]="orientacion == 'vertical' ? 'right' : 'bottom'"
+					class="enabled cursor-pointer action-panel-opt flex items-center w-full p-10"
+				>
+					<i nz-icon
+					class="icon text-white w-full text-center"
+					[nzType]="!collapse ? 'close' : 'plus'" nzTheme="outline"></i>
+
+					<p *ngIf="mostrarLabels" class="text-white display-block m-0 mt-5 text-center w-full">
+						{{ !collapse ? 'Cerrar' : 'Abrir' }}
+					</p>
+				</div>
+			</div>
+		</ng-container>
+
+	</div>
+
+</div>

@@ -1,0 +1,63 @@
+/* Insert your custom global CSS*/
+
+form, nz-form-item {
+	& .ng-invalid.ng-touched {
+		&, & nz-select-top-control{
+			border-color: var(--error) !important;
+
+			&:focus {
+				box-shadow: 0 0 0 2px rgb(219 5 5 / 20%);
+			}
+		}
+	}
+}
+
+.user-select-none { user-select: none; }
+
+.text-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.vs-custom-button,
+.vs-btn-custom,
+[class*="vs-btn-"] {
+	background: var(--background);
+	border-color: var(--background);
+
+	&:hover, &:focus {
+		background: var(--background-alt);
+		border-color: var(--background-alt);
+	}
+}
+
+.vs-btn-orange {
+	--background: #e48e2b;
+	--background-alt: #ffae6c;
+}
+
+.vs-btn-red {
+	--background: #eb2f3f;
+	--background-alt: #f33e4d;
+}
+
+.vs-btn-green {
+	--background: #149c63;
+	--background-alt: #58dfa6;
+}
+
+.vs-btn-gray {
+	--background: #737373;
+	--background-alt: #a3a3a3;
+}
+
+.vs-btn-black {
+	--background: var(--black-300);
+	--background-alt: var(--black-200);
+}
+
+
+nz-form-item, .ant-form-item {
+	margin-bottom: 0;
+}

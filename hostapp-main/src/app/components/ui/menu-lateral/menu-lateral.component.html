@@ -1,0 +1,59 @@
+<div
+	[@enter]="showMenu"
+	*ngIf="vsType == 'overlay' && showMenu"
+	class="overlay w-full h-full z-index bg-black-alpha top-0 left-0 cursor-pointer fixed"
+	(click)="cerrarMenu()">
+</div>
+
+<div
+	[@slide]="showMenu"
+	[ngClass]="{
+		'shadow-lg top-0 left-0 fixed z-index': vsType == 'overlay',
+		'border-0 border-solid border-white': vsType == 'static'
+	}"
+	class="flex flex-no-wrap justify-between bg-image w-full h-screen overflow-auto"
+	style="flex-direction: column;"
+	[style.width]="width"
+	*ngIf="showMenu"
+>
+
+	<div class="w-full px-20 pt-30 pb-20">
+		<img src="./assets/logo-vimacoop-negro.svg" class="display-block w-full" style="max-width: 16rem;">
+	</div>
+
+	<div class="items-menu h-full relative overflow-auto pb-20 px-10">
+		<ng-container *ngIf="!mostrarCargando; else animacionCargando">
+			<a (click)="alternarSubmenu('')" routerLink="inicio" style="user-select: none;" class="item-menu item-menu-parent rounded-sm font-medium w-full display-block no-underline">
+				Inicio
+			</a>
+
+			<ng-container *ngFor="let opt of opcionesSistema">
+				<a (click)="alternarSubmenu(opt.codigoOpcion)"
+				style="user-select: none;"
+				class="item-menu item-menu-parent rounded-sm font-medium w-full display-block no-underline"
+				[ngClass]="{ 'item-active': opt.codigoOpcion == opcionAbierta }">
+					{{ opt.descripcion }}
+				</a>
+
+				<ng-container *ngIf="opt.codigoOpcion == opcionAbierta">
+					<div [@inOutAnimation] class="item-submenu overflow-hidden my-7 w-full">
+						<ng-container *ngFor="let subOpt of opt.submenus; let esUltimo = last">
+							<a [href]="subOpt.opcionNet" class="item-menu w-full display-block no-underline">
+								{{ subOpt.descripcion }}
+							</a>
+						</ng-container>
+					</div>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+	</div>
+
+</div>
+
+<ng-template #animacionCargando>
+
+	<a class="px-20 py-10 w-full cursor-normal display-block no-underline text-black">
+		<nz-skeleton [nzActive]="true"></nz-skeleton>
+	</a>
+
+</ng-template>

@@ -1,0 +1,31 @@
+<div class="w-full display-block relative vs-table-container">
+	<table class="vs-table table vs-table-paginated w-full">
+		<ng-content></ng-content>
+	</table>
+
+	<ng-container *ngIf="data == null || data.length == 0">
+		<div class="w-full border-b-1 border-solid border-theme-bluegray-300 p-25">
+			<nz-empty></nz-empty>
+		</div>
+	</ng-container>
+
+	<div *ngIf="showPagination" class="w-full justify-end vs-table-pagination flex items-center flex-no-wrap">
+		<button (click)="changeIndex(index - 1)" [disabled]="index < 1" class="m-5" nz-button nzSize="small"><i nz-icon nzType="left" nzTheme="outline"></i></button>
+
+		<button class="m-5" nz-button nzSize="small">1</button>
+		<button class="m-5" nz-button nzType="primary" nzSize="small">2</button>
+		<button class="m-5" nz-button nzSize="small">3</button>
+
+		<button (click)="changeIndex(index + 1)" [disabled]="index >= totalPages" class="m-5" nz-button nzSize="small"><i nz-icon nzType="right" nzTheme="outline"></i></button>
+	</div>
+
+	<ng-container *ngIf="showLoading">
+		<div class="flex content-start justify-center vs-table-loading-indicator pt-50">
+			<div class="h-35 h-35 overflow-visible">
+				<nz-spin nzSimple nzSize="default"></nz-spin>
+			</div>
+			<p class="w-full display-block font-medium text-center m-0">Cargando / Loading</p>
+		</div>
+	</ng-container>
+
+</div>

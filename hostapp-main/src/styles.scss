@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap');
+@import "./app/styles/VScss/VSstyles.scss";
+@import "./app/styles/VScss/variables";
+@import "./app/app.component.scss";
+@import "./app/styles/custom.scss";
+
+.select {
+	.ant-select-selector {
+		height: calc(var(--default-size) * 3 + (var(--default-size) * 0.15 * 2)) !important;
+		padding: calc(var(--default-size) * 0.15) 0.9rem !important;
+	}
+}
+
+.min-size {
+	width: 1%;
+	white-space: nowrap;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    animation: rotating 2.1s linear infinite;
+}
+
+.center {
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+.show-on-hover {
+	opacity: 0;
+}
+
+tr {
+	&:hover {
+		.show-on-hover {
+			opacity: 1;
+		}
+	}
+}
+

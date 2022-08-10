@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\CorreosElectronicos\" />
+    <Folder Include="Entities\CorreosElectronicos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Vimasistem.BasicFiltering" />
+    <None Remove="Dtos\CorreosElectronicos\" />
+    <None Remove="Entities\CorreoElectronico\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NSwag.AspNetCore" Version="13.16.1" />
+    <PackageReference Include="Vimasistem.BasicFiltering" Version="1.0.5" />
+  </ItemGroup>
+</Project>

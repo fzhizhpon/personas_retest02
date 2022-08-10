@@ -1,0 +1,80 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/micro-marketing/api/MultimediaCabecera",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/marketing/multimediaCabecera",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-marketing/api/MultimediaCabecera/estado",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/marketing/multimediaCabecera/estado",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-marketing/api/MultimediaDetalles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/marketing/multimediaDetalles",
+      "UpstreamHttpMethod": [
+
+        "Post",
+        "Put"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-marketing/api/MultimediaDetalles/{codigoEspacio}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/marketing/multimediaDetalles/{codigoEspacio}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/micro-marketing/api/MultimediaDetalles/estado",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/marketing/multimediaDetalles/estado",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+<h3 class="font-bold m-0 display-block w-full mb-15">Accionistas / Consejo</h3>
+
+<form nz-form [formGroup]="form" class="w-full grid gap-15 mb-20">
+	<div class="grid-col-3">
+		<p class="label">Nro. Identificación:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+				<input nz-input class="configuracionControles"
+					formControlName="identificacion" (keyup.enter)="NuevaFilaConsejoAccionistas()">
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+
+	<div class="grid-col-3">
+		<p class="label">Razón social:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+				<input nz-input  class="configuracionControles"
+				formControlName="razonSocial" (keyup.enter)="NuevaFilaConsejoAccionistas()">
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+
+	<div class="grid-col-3">
+		<p class="label">Nacionalidad:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+				<input nz-input class="configuracionControles"
+				formControlName="nacionalidad" (keyup.enter)="NuevaFilaConsejoAccionistas()">
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+
+	<div class="grid-col-3">
+		<p class="label">% Acciones:</p>
+		<nz-form-item>
+			<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+				<input nz-input (keyup.enter)="NuevaFilaConsejoAccionistas()"
+					formControlName="porcentajeAccionista">
+			</nz-form-control>
+		</nz-form-item>
+	</div>
+
+	<div class="grid-col-2">
+		<p class="label" style="opacity: 0;">.</p>
+		<button nz-button class="w-full" nzType="primary" (click)="NuevaFilaConsejoAccionistas()">ACCION</button>
+	</div>
+</form>
+
+<div class="w-full">
+	<vs-table [showPagination]="false" [data]="listConsejoAccionistas">
+		<thead>
+			<tr>
+				<th>Identificacion</th>
+				<th>Razon Social</th>
+				<th>Nacionalidad</th>
+				<th>% Acciones</th>
+				<th class="min-width"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<ng-container *ngFor="let data of listConsejoAccionistas; let i = index">
+				<tr>
+					<td>{{ data.identificacion }}</td>
+					<td>{{ data.razonSocial }}</td>
+					<td>{{ data.nacionalidad }}</td>
+					<td>{{ data.porcentajeAccionista }}</td>
+					<td>
+						<div class="flex items-center flex-no-wrap">
+							<button nz-tooltip nzTooltipTitle="Editar" nz-button nzType="text" class="mr-7">
+								<i nz-icon nzType="edit" nzTheme="outline"></i>
+							</button>
+
+							<button nz-tooltip nzTooltipTitle="Eliminar" nz-button nzType="text" class="text-red-600 hover:text-red-800">
+								<i nz-icon nzType="delete" nzTheme="outline"></i>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</ng-container>
+
+			<!--
+			<tr *ngFor="let data of listConsejoAccionistas; let i = index">
+				<td>
+					<input nz-input Width="180px" class="configuracionControles"
+						(keyup.enter)="ModificarFilaConsejoAccionistas(data,i)" [(ngModel)]="data.identificacion">
+				</td>
+				<td>
+					<input nz-input Width="70px" (keyup.enter)="ModificarFilaConsejoAccionistas(data,i)"
+						[(ngModel)]="data.razonSocial">
+				</td>
+				<td>
+					<input nz-input Width="70px" (keyup.enter)="ModificarFilaConsejoAccionistas(data,i)"
+						[(ngModel)]="data.nacionalidad">
+				</td>
+				<td>
+					<input nz-input Width="70px" (keyup.enter)="ModificarFilaConsejoAccionistas(data,i)"
+						[(ngModel)]="data.porcentajeAccionista">
+				</td>
+				<td>
+					<button nz-button nzType="primary" nzShape="circle" nzDanger
+						(click)="EliminarFilaConsejoAccionistas(i)"><i nz-icon nzType="delete"
+							nzTheme="outline"></i></button>
+				</td>
+			</tr>
+			-->
+		</tbody>
+	</vs-table>
+</div>
+
+<div class="w-full pt-20 text-right">
+	<button nz-button nzType="primary" class="vs-btn-green">Guardar cambios</button>
+</div>

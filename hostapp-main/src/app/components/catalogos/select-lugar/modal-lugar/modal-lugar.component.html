@@ -1,0 +1,50 @@
+<div *nzModalTitle>
+	<h4 class="font-bold m-0 display-block">Búsqueda de lugares</h4>
+</div>
+
+<div>
+	<div class="grid">
+		<form [formGroup]="form" class="grid-col-12 grid">
+			<div class="grid-col-9">
+				<p class="label">Búsqueda:</p>
+				<input #buscar formControlName="busqueda" (keyup.enter)="cargarLugares()" nz-input class="w-full" type="text">
+			</div>
+
+			<div class="grid-col-3">
+				<p class="label">.</p>
+				<button (click)="cargarLugares()" nz-button class="vs-btn-black w-full" nzType="primary">
+					<i nz-icon nzType="search" nzTheme="outline"></i>
+					Buscar
+				</button>
+			</div>
+		</form>
+
+		<div class="grid-col-12">
+			<vs-table [loading]="isLoading" [data]="lugares">
+
+				<thead>
+					<tr>
+						<th class="min-size text-center">ID</th>
+						<th>Descripción</th>
+						<th class="min-size"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<ng-container *ngFor="let lugar of lugares">
+						<tr>
+							<td style="white-space: nowrap;">{{ lugar.codigoLugar }}</td>
+							<td>{{ lugar.descripcionLugar | uppercase }}</td>
+							<td class="min-size">
+								<div class="show-on-hover" style="transition: all 0.1s;">
+									<button (click)="seleccionarLugar(lugar)" nz-button nzType="text">Seleccionar</button>
+								</div>
+							</td>
+						</tr>
+					</ng-container>
+				</tbody>
+
+			</vs-table>
+		</div>
+	</div>
+</div>

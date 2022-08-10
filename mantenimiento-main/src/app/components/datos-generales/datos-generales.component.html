@@ -1,0 +1,344 @@
+<div class="w-full mb-10 flex items-center flex-no-wrap justify-between">
+
+	<h3 lang langLabel="datos-generales:titulo" class="font-bold m-0 display-block w-full m-0">Datos generales</h3>
+
+
+	<button (click)="ObtenerTodo()" nz-button nzType="text" nz-tooltip [nzTooltipTitle]="titleTemplate">
+		<i nz-icon nzType="reload" nzTheme="outline"></i>
+	</button>
+	<ng-template #titleTemplate>
+	<span lang langLabel="vs-tooltip:recargar">
+		Volver a cargar
+	</span>
+	  </ng-template>
+</div>
+
+<form [formGroup]="_formPersona"
+	  class="bg-white grid-col-12 rounded border-1 border-solid border-theme-bluegray-300 mb-20">
+	<nz-spin [nzSpinning]="cargando.listar">
+		<div class="w-full flex flex-no-wrap px-15 py-12">
+			<!-- DATOS Generales -->
+			<div class="w-full grid">
+				<div class="grid-col-2 flex-align-items-center">
+					<p lang langLabel="datos-generales:codigo" class="m-0 mb-5 display-block">Código:</p>
+					<nz-form-item>
+						<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+							<input formControlName="codigoPersona" type="text" nz-input/>
+						</nz-form-control>
+					</nz-form-item>
+				</div>
+				<div class="grid-col-2">
+					<p lang langLabel="datos-generales:tipo-persona" class="label">Tipo de persona</p>
+					<nz-form-item>
+						<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+							<vs-select-tipo-persona (ngModelChange)="validarTipoDocumento()" formControlName="codigoTipoPersona"></vs-select-tipo-persona>
+						</nz-form-control>
+					</nz-form-item>
+				</div>
+
+				<div class="grid-col-2">
+					<p lang langLabel="datos-generales:tipo-documento" class="label">Tipo de documento</p>
+					<nz-form-item>
+						<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+							<vs-select-tipo-identificacion (ngModelChange)="validarTipoDocumento()" formControlName="codigoTipoIdentificacion">
+							</vs-select-tipo-identificacion>
+						</nz-form-control>
+					</nz-form-item>
+				</div>
+
+
+				<div class="grid-col-2">
+					<p lang langLabel="datos-generales:identificacion" class="label">Nro. Identificación</p>
+					<nz-form-item>
+						<nz-form-control nzHasFeedback nzErrorTip="Error en el tamaño de los campos">
+							<input class="w-full" vs-trim (blur)="validarIdentificacion()" formControlName="numeroIdentificacion"
+								   nz-input type="text">
+
+						</nz-form-control>
+					</nz-form-item>
+				</div>
+
+				<div class="grid-col-4">
+					<p lang langLabel="datos-generales:tipo-contribuyente" class="label">Tipo de contribuyente</p>
+					<nz-form-item>
+						<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+							<vs-select-tipo-contribuyente
+								formControlName="codigoTipoContribuyente"></vs-select-tipo-contribuyente>
+						</nz-form-control>
+					</nz-form-item>
+				</div>
+			</div>
+		</div>
+	</nz-spin>
+</form>
+
+<div class="bg-white grid-col-12 rounded border-1 border-solid border-theme-bluegray-300">
+	<nz-spin [nzSpinning]="cargando.listarCompleto">
+		<div class="w-full flex flex-no-wrap px-15 py-12">
+			<!-- IMAGEN PERSONA -->
+			<div class="mr-20 text-center" style="width: 25rem;">
+				<div class="w-full mb-15 display-block" style="max-width: 20rem; max-height: 20rem;">
+					<vs-document-viewer *ngIf="_formPersona.get('codigoDocumento')?.value"
+						[codigoDocumento]="_formPersona.get('codigoDocumento')?.value"></vs-document-viewer>
+					<img *ngIf="!_formPersona.get('codigoDocumento')?.value" style="max-width: 20rem; max-height: 20rem;" class="mb-15 w-full display-block"
+					 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjYmlp9JDeNMaFZzw9S3G1dVztGqF_2vq9nA&usqp=CAU">
+				</div>
+				<ng-container [formGroup]="_formPersona">
+					<div class="w-full">
+						<p lang langLabel="datos-generales:observaciones" class="label">Observaciones</p>
+						<textarea nz-input vs-trim formControlName="observaciones"
+								  [nzAutosize]="{ minRows: 3, maxRows: 6 }"></textarea>
+					</div>
+				</ng-container>
+			</div>
+
+			<!-- DATOS Persona -->
+			<div class="w-full grid">
+				<!--PERSONA NATURAL-->
+				<ng-container *ngIf="this._formPersona.controls['codigoTipoPersona'].value==1"
+							  [formGroup]="_formPersonaNatural">
+					<div class="grid-col-3">
+						<p lang langLabel="datos-generales:nombre" class="label">Nombres</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<input class="w-full" nz-input vs-trim type="text" formControlName="nombres">
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-3">
+						<p lang langLabel="datos-generales:apellido-paterno" class="label">Apellido paterno</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<input class="w-full" nz-input vs-trim type="text" formControlName="apellidoPaterno">
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-3">
+						<p lang langLabel="datos-generales:apellido-materno" class="label">Apellido materno</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<input class="w-full" nz-input vs-trim type="text" formControlName="apellidoMaterno">
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-2">
+						<p lang langLabel="datos-generales:fecha-nacimiento" class="label">Fecha de nacimiento</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<nz-date-picker [nzDisabledDate]="disabledDate" (ngModelChange)="calcularEdad($event)" [nzFormat]="dateFormat" nzPlaceHolder="dd/MM/yyyy" class="w-full"
+												formControlName="fechaNacimiento"></nz-date-picker>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+					<div class="grid-col-1">
+						<p lang langLabel="datos-generales:edad" class="label">Edad:</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								{{ edadCalculada }}
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-12">
+						<p lang langLabel="datos-generales:lugar-nacimiento" class="label">Lugar de nacimiento</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-lugar formControlName="lugarNacimiento"></vs-select-lugar>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-2">
+						<p lang langLabel="datos-generales:sexo" class="label">Sexo</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-sexo formControlName="codigoGenero"></vs-select-sexo>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-2">
+						<p lang langLabel="datos-generales:tipo-sangre" class="label">Tipo de sangre</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-tipo-sangre formControlName="codigoTipoSangre"></vs-select-tipo-sangre>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-5">
+						<p lang langLabel="datos-generales:etnia" class="label">Etnia</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-tipo-etnia formControlName="codigoTipoEtnia"></vs-select-tipo-etnia>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-3">
+						<p lang langLabel="datos-generales:estado-civil" class="label">Estado civil</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-estado-civil (ngModelChange)="validarEstadoCivil($event)"
+														formControlName="codigoEstadoCivil"></vs-select-estado-civil>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-3">
+						<p lang langLabel="datos-generales:profesion" class="label">Profesión</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<vs-select-profesion formControlName="codigoProfesion"></vs-select-profesion>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<div class="grid-col-2">
+						<p class="label hidden-label">.</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<label nz-checkbox formControlName="tieneDiscapacidad">
+									<p lang langLabel="datos-generales:discapacidad" class="label"> Tiene discapacidad</p>
+								</label>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<ng-container *ngIf="this._formPersonaNatural.controls['tieneDiscapacidad'].value">
+						<div class="grid-col-3">
+							<p lang langLabel="datos-generales:tipo-discapacidad" class="label">Tipo Discapacidad</p>
+							<nz-form-item>
+								<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+									<vs-select-tipo-discapacidad
+										formControlName="codigoTipoDiscapacidad"></vs-select-tipo-discapacidad>
+								</nz-form-control>
+							</nz-form-item>
+						</div>
+						<div class="grid-col-2">
+							<p lang langLabel="datos-generales:tipo-porcentaje-discapacidad" class="label">% Discapacidad</p>
+							<nz-form-item>
+								<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+									<nz-input-number class="w-full" [nzMin]="0" [nzMax]="100"
+													 formControlName="porcentajeDiscapacidad"></nz-input-number>
+								</nz-form-control>
+							</nz-form-item>
+						</div>
+					</ng-container>
+
+					<div class="grid-col-1">
+						<p class="label hidden-label">.</p>
+						<nz-form-item>
+							<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+								<label nz-checkbox formControlName="esVulnerable">
+									<p lang langLabel="datos-generales:vulnerable" class="label"> Vulnerable</p>
+								</label>
+							</nz-form-control>
+						</nz-form-item>
+					</div>
+
+					<ng-container *ngIf="!esConyugue">
+						<ng-container
+							*ngIf="this._formPersonaNatural.controls['codigoEstadoCivil'].value == 1 || this._formPersonaNatural.controls['codigoEstadoCivil'].value == 5">
+							<div class="grid-col-5">
+								<p lang langLabel="datos-generales:conyugue" class="label">Cónyugue</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<vs-select-persona [personaDatos]="_formPersona.getRawValue()"
+														[esConyugue]="true"
+														formControlName="codigoConyuge"></vs-select-persona>
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+						</ng-container>
+					</ng-container>
+				</ng-container>
+
+				<!--PERSONA NO NATURAL-->
+				<ng-container *ngIf="this._formPersona.controls['codigoTipoPersona'].value==2"
+							  [formGroup]="_formPersonaNoNatural">
+					<div class="grid-col-12">
+						<div class="w-full grid">
+							<div class="grid-col-3">
+								<p lang langLabel="datos-generales:razon-social" class="label">Razón Social</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<input class="w-full" vs-trim nz-input type="text" formControlName="razonSocial">
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+
+							<div class="grid-col-4">
+								<p lang langLabel="datos-generales:objeto-social" class="label">Objeto Social</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<textarea nz-input vs-trim class="w-full" type="text" formControlName="objetoSocial" [nzAutosize]="{ minRows: 1, maxRows: 6 }"></textarea>
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+
+							<div class="grid-col-3">
+								<p lang langLabel="datos-generales:tipo-sociedad" class="label">Tipo de Sociedad</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<vs-select-tipo-sociedad formControlName="tipoSociedad"
+																 class="w-full"></vs-select-tipo-sociedad>
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+
+							<div class="grid-col-2">
+								<p lang langLabel="datos-generales:fecha-constitucion" class="label">Fecha constitución</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<nz-date-picker [nzFormat]="dateFormat" class="w-full" [nzDisabledDate]="disabledDate"
+														formControlName="fechaConstitucion"></nz-date-picker>
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+
+							<div class="grid-col-4">
+								<p lang langLabel="datos-generales:web" class="label">Dirección web</p>
+								<nz-form-item>
+									<nz-form-control nzHasFeedback nzErrorTip="El campo es requerido">
+										<input class="w-full" vs-trim nz-input type="text" formControlName="direccionWeb">
+									</nz-form-control>
+								</nz-form-item>
+							</div>
+
+							<div class="grid-col-2">
+								<p class="hidden-label">.</p>
+								<label nz-checkbox formControlName="finalidadLucro">
+									<p lang langLabel="datos-generales:lucro" class="label"> Finalidad de lucro</p>
+								</label>
+							</div>
+
+							<div class="grid-col-3">
+								<p class="hidden-label">.</p>
+								<label nz-checkbox formControlName="obligadoLlevarContabilidad">
+									<p lang langLabel="datos-generales:contabilidad" class="label"> Obligado a llevar contabilidad</p>
+								</label>
+							</div>
+
+							<div class="grid-col-3">
+								<p class="hidden-label">.</p>
+								<label  nz-checkbox formControlName="agenteRetencion">
+									<p lang langLabel="datos-generales:agente-retencion" class="label"> Agente de retención</p>
+								</label>
+							</div>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</nz-spin>
+
+</div>
+<!--<div class="w-full pt-20 text-right">-->
+<!--	<button *ngIf="mostrarGuardar" lang langLabel="datos-generales:guardar-cambios" nz-button nzType="primary" [nzLoading]="cargando.guardar" class="vs-btn-green"-->
+<!--			(click)="Guardar()">Guardar cambios-->
+<!--	</button>-->
+<!--</div>-->

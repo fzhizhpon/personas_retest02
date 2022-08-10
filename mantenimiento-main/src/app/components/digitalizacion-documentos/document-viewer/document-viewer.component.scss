@@ -1,0 +1,11 @@
+.textLayer {
+	opacity: 0.4;
+
+	.highlight {
+		background-color: #cf0056;
+	}
+
+	.highlight.selected {
+		background-color: #00cf9f;
+	}
+}

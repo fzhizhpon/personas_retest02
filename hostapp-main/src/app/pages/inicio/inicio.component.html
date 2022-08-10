@@ -1,0 +1,20 @@
+<div class="w-screen h-screen flex flex-no-wrap">
+	<app-menu-lateral style="z-index: 100;"></app-menu-lateral>
+
+	<div class="w-full h-full bg-white">
+		<app-cabecera [showNotifications]="false"></app-cabecera>
+
+		<div id="content" class="overflow-auto w-full" style="height: calc(100vh - 5.3rem);">
+
+			<div class="w-full p-25">
+				<div class="w-full grid">
+					<h1 class="grid-col-12 font-black display-block text-center m-0">¡Bienvenido <h1 class="font-black text-theme-primary m-0">{{ infoUsuario.usuario }}</h1>!</h1>
+
+					<div class="overflow-auto grid-col-7 border-1 border-solid border-theme-bluegray-300 rounded">
+						<vs-panel-notificaciones></vs-panel-notificaciones>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

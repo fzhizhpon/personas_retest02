@@ -1,0 +1,103 @@
+<div class="w-screen h-screen grid no-gap">
+	<div class="grid-col-6 flex flex-no-wrap  items-center justify-center">
+		<vs-visualizar-imagen class="bg-noticias" [codigoEspacio]="4"></vs-visualizar-imagen>
+		<vs-visualizar-carrusel [codigoEspacio]="3"></vs-visualizar-carrusel>
+	</div>
+
+	<div class="grid-col-6"
+		 style="flex-direction: column;">
+		<div class="pt-25 mx-auto w-full h-full px-30 flex items-center justify-between"
+			 style="flex-direction: column; max-width: 60rem;">
+			<!--Idioma y logo-->
+			<div class="w-full flex justify-between">
+				<div>
+					<img class="display-block h-25" src="assets/logo-vimacoop.svg">
+				</div>
+
+				<div
+					class="flex px-7 hover:bg-theme-bluegray-100 border-1 border-solid border-theme-bluegray-300 rounded-sm items-center flex-no-wrap">
+					<img [src]="langPrefix.icon" class="rounded-sm h-20 w-25">
+
+					<nz-select style="max-width: 20rem;" nzBorderless (ngModelChange)="cambiarIdioma($event)"
+							   [ngModel]="langPrefix" class="w-full">
+						<ng-container *ngFor="let lang of idiomas">
+							<nz-option [nzValue]="lang" [nzLabel]="lang.label" [nzDisabled]="lang == langPrefix"
+									   nzCustomContent>
+								<img [src]="lang.icon" class="rounded-sm h-15 w-20 mr-7">
+								{{ lang.label }}
+							</nz-option>
+						</ng-container>
+					</nz-select>
+				</div>
+			</div>
+			<!--Formulario de acceso-->
+			<div class="w-full">
+				<form [formGroup]="formLogin"
+					  class="rounded border-1 border-solid border-theme-bluegray-200 bg-theme-bluegray-100 p-20 w-full">
+					<h2 lang langLabel="login:iniciar-sesion" class="font-bold m-0">Iniciar Sesión</h2>
+
+					<div class="w-full mb-15">
+						<p lang langLabel="login:nombre-usuario" class="text-black-100 w-full m-0 display-block mb-5">
+							Nombre de usuario</p>
+						<input nz-input formControlName="usuario" (focus)="restablecerFormulario()"
+							   (blur)="cargarDatosFormulario()" type="text" class="w-full">
+					</div>
+
+					<ng-container *ngIf="loadings.roles">
+						<div class="w-full mb-15 border-1 border-solid border-theme-bluegray-400 bg-white rounded-sm px-7 py-5">
+							<p class="m-0 display-block text-theme-black-100">Cargando roles...</p>
+						</div>
+					</ng-container>
+
+					<ng-container *ngIf="roles.length > 1">
+						<div class="w-full mb-15">
+							<p lang langLabel="login:rol" class="text-black-100 w-full m-0 display-block mb-5">
+								Rol</p>
+							<nz-select class="w-full" formControlName="rol" nzPlaceHolder="Seleccione un rol">
+								<nz-option *ngFor="let rol of roles" [nzLabel]="rol.nombreRol + ' - ' + rol.nombreAgencia" [nzValue]="rol">
+								</nz-option>
+							</nz-select>
+						</div>
+					</ng-container>
+
+					<div class="w-full mb-15">
+						<p lang langLabel="login:contrasena" class="text-black-100 w-full m-0 display-block mb-5">
+							Contraseña</p>
+						<input nz-input formControlName="clave" type="password" class="w-full">
+					</div>
+
+					<div class="w-full mb-7 pt-7">
+						<label formControlName="forzarCierreSesiones" nz-checkbox>
+							<p lang langLabel="login:cerrar-sesiones"
+							   class="text-black-100 w-full m-0 display-block mb-5">
+								Cerrar sesiones activas</p>
+						</label>
+					</div>
+
+					<div class="w-full pt-10">
+						<button lang langLabel="login:acceder" nz-button [nzLoading]="loadings.acceder"
+								(click)="loginCedula()" nzType="primary" class="w-full">Acceder
+						</button>
+					</div>
+				</form>
+
+				<ng-container *ngIf="mostrarError">
+					<div class="mt-20 w-full rounded-sm px-12 py-7 bg-redgray border-1 border-solid border-red-200">
+						<p class="m-0 display-block text-red-700">{{ loginError }}</p>
+					</div>
+				</ng-container>
+			</div>
+			<div class="h-20 w-full"></div>
+		</div>
+
+		<!--Desarrollado por-->
+		<div class="w-full text-right">
+			<a class="no-underline cursor-pointer m-0 display-block" target="_blank"
+			   href="https://vimasistem.com/contacto?source=CORE%20FINANCIERO&reason=Click%20boton%20desarrollado%20por">
+				<img style="max-width: 100%; max-height: 3rem; display: inline-block;" class="m-0"
+					 src="assets/login/developed-by.jpg" alt="Vimasistem Cia. Ltda.">
+			</a>
+		</div>
+	</div>
+
+</div>

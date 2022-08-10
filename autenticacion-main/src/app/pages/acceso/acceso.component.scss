@@ -1,0 +1,17 @@
+.bg-image {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bg-noticias {
+	height: 100vh;
+	width: max-content;
+	overflow: auto;
+	position: absolute;
+	z-index: -100;
+}
+
+.bg-formulario {
+	background-image: url('../../../assets/login/fondo-formulario.jpg');
+}

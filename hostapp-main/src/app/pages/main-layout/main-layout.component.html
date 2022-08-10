@@ -1,0 +1,9 @@
+<div class="w-screen h-screen">
+	<app-cabecera (onMenuClick)="mostrarMenu = $event" [showMenuButton]="true"></app-cabecera>
+
+	<div id="content" class="overflow-auto w-full" style="height: calc(100vh - 5.3rem);">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+
+<app-menu-lateral [(showMenu)]="mostrarMenu" vsType="overlay"></app-menu-lateral>

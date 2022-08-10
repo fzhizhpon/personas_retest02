@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="showLoading">
+	<div style="z-index: 99999;" class="w-screen h-screen flex items-center justify-center top-0 left-0 fixed bg-white-alpha">
+
+		<div class="text-center">
+			<img src="../assets/icono-vimacoop.svg" class="mx-auto display-block w-50">
+			<p class="font-bold text-theme-black-100 mt-20 w-full text-center">Cargando información</p>
+		</div>
+
+	</div>
+</ng-container>

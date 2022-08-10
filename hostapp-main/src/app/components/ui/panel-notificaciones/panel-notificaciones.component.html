@@ -1,0 +1,46 @@
+<div class="w-full overflow-hidden relative">
+	<div class="w-full bg-white">
+		<div class="notifications-header ticky bg-white top-0 left-0 px-20 py-12 shadow-sm border-solid border-b-1 border-theme-bluegray-300 flex items-center flex-no-wrap justify-between" style="min-height: 6rem;">
+			<p class="font-bold display-block m-0" style="font-size: 1.85rem;">Notificaciones</p>
+
+			<button (click)="obtenerMensajesOperativos()" nz-button nz-tooltip nzTooltipTitle="Recargar" nzType="text"><i nz-icon class="text-theme-primary" nzType="reload" nzTheme="outline"></i></button>
+		</div>
+
+		<ng-container *ngIf="!mostrarCargando; else animacionCargando">
+			<ng-container *ngIf="mensajes.length > 0; else mensajeBandejaLimpia">
+				<ng-container *ngFor="let msg of mensajes; let isLast = last">
+					<div class="px-20 py-12 flex items-center flex-no-wrap"
+						[ngClass]="{'border-solid border-b-1 border-theme-bluegray-300': !isLast}">
+						<div class="w-40 h-40 relative rounded-full">
+							<img [src]="'https://avatars.dicebear.com/api/initials/'+msg.nombreUsuarioEnvia+'.svg'" class="w-full h-full display-block rounded-full">
+
+							<div class="w-15 h-15 rounded-full bg-theme-primary border-white border-solid absolute" style="border-width: 0.3rem; top: -0.3rem; left: -0.3rem;"></div>
+						</div>
+
+						<div class="pl-15" style="width: calc(100% - 4rem);">
+							<div class="mb-5 w-full flex items-center flex-no-wrap justify-between">
+								<p class="font-medium m-0 display-block">{{ msg.nombreUsuarioEnvia }}</p>
+
+								<p class="display-block text-gray-800 font-medium m-0 display-block text-sm">{{ msg.fechaEnvia | date:'dd-MM-yyyy hh:mm' }}</p>
+							</div>
+
+							<p class="text-smd display-block m-0 w-full text-theme-black-200">{{ msg.mensaje }}</p>
+						</div>
+					</div>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+	</div>
+</div>
+
+<ng-template #animacionCargando>
+	<div class="w-full p-30 flex items-center justify-center">
+		<i nz-icon nzType="loading" class="text-theme-corp-primary" style="font-size: 6rem;" nzTheme="outline"></i>
+	</div>
+</ng-template>
+
+<ng-template #mensajeBandejaLimpia>
+	<div class="px-20 py-10 pt-20">
+		<nz-empty nzNotFoundContent="No hay notificaciones para mostrar."></nz-empty>
+	</div>
+</ng-template>

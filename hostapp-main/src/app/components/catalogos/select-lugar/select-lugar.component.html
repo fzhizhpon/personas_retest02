@@ -1,0 +1,23 @@
+<nz-input-group
+	(click)="abrirModalBusqueda()"
+	class="w-full"
+	[nzAddOnBefore]="codigoLugar"
+	[nzSuffix]="suffixLoading">
+
+	<input [disabled]="isDisabled" type="text"
+	[value]="nombreLugar | uppercase"
+	readonly nz-input placeholder="Seleccione un lugar" />
+</nz-input-group>
+
+<ng-template #codigoLugar>
+	<p class="m-0">
+		{{ value?.codigoPais ?? '*' }}-
+		{{ value?.codigoProvincia ?? '*' }}-
+		{{ value?.codigoCiudad ?? '*' }}-
+		{{ value?.codigoParroquia ?? '*' }}
+	</p>
+</ng-template>
+
+<ng-template #suffixLoading>
+	<i *ngIf="isLoading" nz-icon nzType="loading" nzTheme="outline"></i>
+</ng-template>

@@ -1,0 +1,1060 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TablasComunesCabecera",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TablasComunesCabecera",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TablasComunesDetalles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TablasComunesDetalles",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/empresas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/empresas",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/agencias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/agencias",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/sucursales",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/sucursales",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/niveles-instruccion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/niveles-instruccion",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/parentescos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/parentescos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/profesiones",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/profesiones",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Put",
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/profesiones/{codigoProfesion}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/profesiones/{codigoProfesion}",
+      "UpstreamHttpMethod": [
+        "Delete",
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-actividades-trabajos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-actividades-trabajos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-discapacidades",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-discapacidades",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/estados-civiles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/estados-civiles",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/generos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/generos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-cuentas-financieras",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-cuentas-financieras",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/operadoras-fijas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/operadoras-fijas",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/operadoras-moviles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/operadoras-moviles",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/operadoras-moviles/paises",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/paises-marcado-moviles",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/industrias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/industrias",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/subsectores-economicos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/subsectores-economicos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/sectores-economicos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/sectores-economicos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-tiempo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-tiempo",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-trabajos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-trabajos",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-etnias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-etnias",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/parroquias/ciudad",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/parroquias/ciudad",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/ciudades/provincia",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/ciudades/provincia",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/provincias/pais",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/provincias/pais",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/provincias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/provincias",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/paises",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/paises",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-identificaciones",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-identificaciones",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-personas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-personas",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-sangre",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-sangre",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/lugares",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/lugares",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposContribuyentes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TiposContribuyentes",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposSociedades",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TiposSociedades",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/ActividadesEconomicas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/ActividadesEconomicas",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposRepresentantes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TiposRepresentantes",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposResidencias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/TiposResidencias",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/Persistencia/eliminar",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/eliminar",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposInstitucionesFinancieras",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tiposinstitucionesfinancieras",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/InstitucionesFinancieras",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/institucionesfinancieras",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/InstitucionesFinancieras/Full",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/institucionesfinancieras/full",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposBienesInmuebles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tiposbienesinmuebles",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposBienesMuebles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tiposbienesmuebles",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/TiposBienesIntangibles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tiposbienesintangibles",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    //nuevo
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipos-autenticacion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipos-autenticacion",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/estado-usuario",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/estado-usuario",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/nombre-cargos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/nombre-cargos",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/usuario-data-base",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/usuario-data-base",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/departamentos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/departamentos",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/monedas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/monedas",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipofirmante",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipofirmante",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/tipocuenta",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/tipocuenta",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/caracteristicacuenta",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/caracteristicacuenta",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/productos/actividadfinanciera",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/productos/actividadfinanciera",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/micro-catalogo/api/productos/codigogrupo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogo/productos/codigogrupo",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+
+  ]
+}

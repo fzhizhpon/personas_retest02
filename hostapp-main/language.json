@@ -1,0 +1,27 @@
+{
+	"ui": {
+		"login": {
+			"id_opcion_sistema": "inicio_sesion",
+			"es": {
+				"titulo": "Iniciar Sesión",
+				"num_id": "Nro. Identificación",
+				"pass": "Contraseña",
+				"emp": "Empresa",
+				"sucs": "Sucursal",
+				"agen": "Agencia",
+				"per": "Periodo",
+				"btn": "Acceder"
+			},
+			"en": {
+				"titulo": "Sign in",
+				"num_id": "ID Number",
+				"pass": "Password",
+				"emp": "Company",
+				"sucs": "Branch office",
+				"agen": "Agency",
+				"per": "Period",
+				"btn": "Enter"
+			}
+		}
+	}
+}

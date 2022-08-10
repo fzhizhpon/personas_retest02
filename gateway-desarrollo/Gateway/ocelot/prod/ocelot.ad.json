@@ -1,0 +1,18 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/micro-ad/api/validacion-usuario",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-balancer",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/ad/validar-usuario",
+      "UpstreamHttpMethod": [
+        "POST"
+      ]
+    }
+  ]
+}

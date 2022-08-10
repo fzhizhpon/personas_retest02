@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoopCrea.Cross.Cache" Version="1.1.0" />
+    <PackageReference Include="CoopCrea.Cross.Discovery" Version="1.0.2" />
+    <PackageReference Include="CoopCrea.Cross.Event" Version="1.0.0" />
+    <PackageReference Include="CoopCrea.Cross.Http" Version="1.2.3" />
+    <PackageReference Include="CoopCrea.Cross.Log" Version="1.0.0" />
+    <PackageReference Include="CoopCrea.Cross.Metric" Version="1.0.0" />
+    <PackageReference Include="CoopCrea.Cross.Token" Version="1.0.0" />
+    <PackageReference Include="CoopCrea.Cross.Tracing" Version="1.0.0" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.16.1" />
+    <PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.3.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.16.1" />
+    <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.8.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.61" />
+    <PackageReference Include="Seq.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Vimasistem.BasicFiltering" Version="1.0.5" />
+    <PackageReference Include="VimaCoop.Excepciones" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Personas.Core\Personas.Core.csproj" />
+    <ProjectReference Include="..\Personas.Application\Personas.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Vimasistem.BasicFiltering" />
+    <None Remove="Querys\CorreosElectronicos\" />
+    <None Remove="VimaCoop.Excepciones" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Querys\CorreosElectronicos\" />
+    <Folder Include="Validadores\Representantes\" />
+  </ItemGroup>
+</Project>

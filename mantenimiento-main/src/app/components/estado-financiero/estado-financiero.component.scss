@@ -1,0 +1,14 @@
+.rotated-text {
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--corp-primary);
+	margin: 0;
+	line-height: 1.7rem;
+
+	position: absolute;
+	transform-origin: 0 0;
+  	transform: rotate(270deg);
+	top: 10rem;
+	left: 0;
+}

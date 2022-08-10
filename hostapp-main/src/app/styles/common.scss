@@ -1,0 +1,10 @@
+.label, .hidden-label {
+	display: block;
+	margin: 0;
+	margin-bottom: 0.333rem;
+}
+
+.hidden-label {
+	opacity: 0;
+	user-select: none;
+}

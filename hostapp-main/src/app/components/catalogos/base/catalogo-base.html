@@ -1,0 +1,19 @@
+<nz-select
+		class="w-full"
+		nzShowSearch
+		autocomplete="off"
+		[nzAllowClear]="allowClear"
+		[nzPlaceHolder]="tieneError ? labelError : placeholder"
+		[disabled]="isDisabled"
+		[ngModel]="value"
+		(ngModelChange)="change($event)"
+		[nzLoading]="isLoading">
+
+		<ng-container *ngIf="!isLoading">
+			<ng-container *ngFor="let catalogo of catalogos">
+				<nz-option [nzValue]="catalogo.codigo" [nzLabel]="catalogo.descripcion"></nz-option>
+			</ng-container>
+		</ng-container>
+
+		<nz-option *ngIf="isLoading" nzLabel="Cargando información..." [nzValue]="null" nzDisabled></nz-option>
+	</nz-select>
