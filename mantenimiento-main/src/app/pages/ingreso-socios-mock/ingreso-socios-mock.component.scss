@@ -1,6 +1,0 @@
-$cols: 7;
-.custom-grid {
-    grid-column-start: 1;
-    grid-column-end: $cols;
-    grid-template-columns: repeat($cols, 1fr);
-}
