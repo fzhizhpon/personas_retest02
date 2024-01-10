@@ -13,7 +13,7 @@
     <PackageReference Include="CoopCrea.Cross.Cache" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.34.0" />
     <PackageReference Include="VimaCoop.Validadores" Version="1.0.0" />
     <PackageReference Include="VimaCoop.DataBases" Version="1.0.2" />
     <PackageReference Include="VimaCoop.Auditoria" Version="1.0.3" />
